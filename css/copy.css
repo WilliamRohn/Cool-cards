@@ -251,6 +251,7 @@
     .roundbox {
         position: fixed;
         z-index: 9;
+        user-select: none;
         width: 80px;
         top: 50%;
         right: 0;

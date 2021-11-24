@@ -1,0 +1,287 @@
+@font-face {
+    font-family: "iconfont"; /* Project id 2852199 */
+    src: url('../font/iconfont.woff2') format('woff2'),
+         url('../font/iconfont.woff?t=1637723179870') format('woff'),
+         url('../font/iconfont.ttf?t=1637723179870') format('truetype');
+    }
+    * {
+        box-sizing: border-box;
+    }
+    html,
+    body {
+        padding: 0;
+        margin: 0;
+    }
+    html {
+        scroll-behavior: auto;
+        /* scroll-behavior: smooth; */
+    }
+    body {
+        position: relative;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        background-color: rgba(189, 189, 189, 0.534);
+    }
+    body::-webkit-scrollbar {
+        width: 0;
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: url(../img/22.jpg) no-repeat center center;
+        background-size: cover;
+        height: 100vh;
+    }
+    .card {
+        position: relative;
+        width: 400px;
+        height: 600px;
+        background: #ffff;
+        box-shadow: 0 0 50px 10px rgba(0, 0, 0, .3);
+        z-index: 9;
+        border-radius: 30px;
+        transition: all .8s ease !important;
+        text-align: center;
+        transform-style: preserve-3d;
+    }
+    .mask {
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        background: url(../img/22.jpg) no-repeat center center;
+        background-size: cover;
+        filter: blur(5px);
+    }
+    .section:nth-of-type(2) .mask{
+        background: url(../img/img01.jpg) no-repeat center center;
+        background-size: cover;
+    }
+    .section:nth-of-type(3) .mask{
+        background: url(../img/25.jpg) no-repeat center center;
+        background-size: cover;
+    }
+    #select1,
+    #select2,
+    #select3 {
+        display: none;
+    }
+    label {
+        position: absolute;
+        left: 0;
+        height: 300px;
+        width: 100%;
+        cursor: pointer;
+        z-index: 9;
+        transform: translateZ(50px);
+    }
+    .imgbox {
+        width: 100%;
+        height: 300px;
+        margin: 0 auto;
+        background: url(../img/22.png) no-repeat center center;
+        background-size: cover;
+        border-radius: 30px;
+        transform: translateZ(50px) scale(0.9);
+        transition: all .8s ease;
+    }
+    .section:nth-of-type(2) .imgbox {
+        background: url(../img/img01.jpg) no-repeat center center;
+        background-size: cover;
+        transform: translateZ(50px);
+    }
+    .section:nth-of-type(3) .imgbox {
+        background: url(../img/25.jpg) no-repeat center center;
+        background-size: cover;
+        transform: translateZ(50px);
+    }
+    .title {
+        font-size: 30px;
+        color: rgb(88, 88, 88);
+        margin: 0;
+        padding: 30px 0 15px 0;
+        transform: translateZ(50px);
+        transition: all .8s ease;
+    }
+    .dec {
+        display: inline-block;
+        width: 400px;
+        margin: 0 0 20px 0;
+        padding: 0 5%;
+        line-height: 25px;
+        font-size: 16px;
+        color: rgb(170, 170, 170);
+        transform: translateZ(30px);
+        transition: all .8s ease;
+        animation: content .8s ease;
+    }
+    .content {
+        display: none;
+        text-align: center;
+        padding: 0 20% 10% 20%;
+        line-height: 40px;
+        background-color: #ffff;
+    }
+    .content p {
+        display: table;
+        text-indent: 2em;
+        margin: 30px 0;
+        text-align: left;
+    }
+    /* icon的样式↓ */
+    /* #region */
+    .icon {
+        display: flex;
+        justify-content: center;
+        width: 300px;
+        font-size: 22px;
+        margin: 0 auto;
+        transform: translateZ(50px);
+    }
+    .icon a {
+        font-family: iconfont;
+        cursor: pointer;
+        user-select: none;
+        margin: 10px;
+        font-size: 22px;
+        color: rgb(75, 75, 75);
+        transition: all .8s ease;
+    }
+    .icon a:hover {
+        transform: scale(1.2);
+        transition: all .8s ease;
+    }
+    .icon a:hover::after {
+        position: absolute;
+        top: -18px;
+        left: 0;
+        width: 30px;
+        font-weight: 500;
+        text-align: left;
+        font-size: 12px;
+    }
+    .icon a:nth-of-type(1):hover::after {
+        content: '喜欢';
+        color: rgb(255, 0, 0);
+    }
+    .icon a:nth-of-type(2):hover::after {
+        content: '分享';
+        color: tomato;
+    }
+    .icon a:nth-of-type(3):hover::after {
+        content: '详情';
+        color: lightgreen;
+    }
+    .icon a:nth-of-type(4):hover::after {
+        content: '惊喜';
+        color: goldenrod;
+    }
+    .icon a:nth-of-type(1):hover {
+        color: rgb(255, 0, 0);
+    }
+    .icon a:nth-of-type(2):hover {
+        color: tomato;
+    }
+    .icon a:nth-of-type(3):hover {
+        color: lightgreen;
+    }
+    .icon a:nth-of-type(4):hover {
+        color: goldenrod;
+    }
+    /* #endregion */
+    /* 点击后的样式↓ */
+    /* #region */
+    #select1:checked~.card, 
+    #select2:checked~.card, 
+    #select3:checked~.card {
+        width: 100%;
+        height: 100%;
+        z-index: 99;
+        border-radius: 0;
+        position: relative;
+        transition: all .8s ease !important;
+    }
+    #select1:checked~.card label,
+    #select2:checked~.card label, 
+    #select3:checked~.card label {
+        width: 100%;
+        height: 100%;
+        transition: all .8s ease;
+    }
+    #select1:checked~.card .imgbox,
+    #select2:checked~.card .imgbox,
+    #select3:checked~.card .imgbox {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        transform: translateZ(0);
+    }
+    #select1:checked~.card .title,
+    #select2:checked~.card .title,
+    #select3:checked~.card .title {
+        transform: translateY(-400px);
+        color: #ffff;
+        font-size: 70px;
+    }
+    #select1:checked~.card .dec,
+    #select2:checked~.card .dec,
+    #select3:checked~.card .dec {
+        display: none;
+    }
+    #select1:checked~.card .content,
+    #select2:checked~.card .content,
+    #select3:checked~.card .content {
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        animation: content .8s ease;
+        transform: translateY(-138px);
+    }
+    #select1:checked~.card .icon,
+    #select2:checked~.card .icon,
+    #select3:checked~.card .icon {
+        display: none;
+    }
+    /* #endregion */
+    .roundbox {
+        position: fixed;
+        z-index: 9;
+        width: 80px;
+        top: 50%;
+        right: 0;
+        margin-top: -100px;
+        border-radius: 23px;
+    }
+    .rounder {
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.251);
+        width: 15px;
+        height: 15px;
+        border: 5px;
+        margin: 20px auto;
+        border-radius: 50%;
+    }
+    .rounderhover {
+        animation: bright .8s ease forwards;
+    }
+    @keyframes bright {
+        from{
+            background: rgba(255, 255, 255, 0.251);
+        }
+        to{
+            background: rgba(255, 255, 255, 0.671);
+        }
+    }
+    @keyframes content {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }

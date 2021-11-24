@@ -1,2 +1,7 @@
 # Cool-cards
-Cool_cards
+
+
+A responsive page with  ``` Html + css + js ```
+
+
+

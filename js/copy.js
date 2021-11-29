@@ -63,20 +63,27 @@ for (const i of roundnum) {
     i.className = 'rounder';
     roundnum[which_rounder].className += ' rounderhover';
 }
-// var roundnum = Array.prototype.slice.call(document.querySelectorAll('.rounder'));
-// if (window.pageYOffset < sectionhight) {
-// for (const i of roundnum) {
-//     i.className = 'rounder';
-//     roundnum[0].className += ' rounderhover';
-// }
-// } else if (window.pageYOffset > sectionhight * 0.99 && window.pageYOffset < sectionhight * 1.99) {
-//     for (const i of roundnum) {
-//         i.className = 'rounder';
-//         roundnum[1].className += ' rounderhover';
-//     }
-// } else if (window.pageYOffset > sectionhight * 1.99) {
-//     for (const i of roundnum) {
-//         i.className = 'rounder';
-//         roundnum[2].className += ' rounderhover';
-//     }
-// };
+//适配
+window.DeviceOrientationEvent.requestPermission()
+    .then(state => {
+        switch (state) {
+            case "granted":
+                DeviceMotionEvent.requestPermission().then(function (state) {
+                    if ('granted' === state) {
+                        window.addEventListener('devicemotion', function () {
+                        }, false);
+                    } else {
+                        alert('apply permission state: ' + state);
+                    }
+                }).catch(function (err) {
+                    alert('error: ' + err);
+                });
+                break;
+            case "denied":
+                alert("浏览器拒绝了使用陀螺仪");
+                break;
+            case "prompt":
+                alert("其他行为");
+                break;
+        }
+    });

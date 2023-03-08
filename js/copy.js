@@ -9,6 +9,22 @@ for (let i = 0; i < section.length; i++) {
 };
 //选中checked后去除视觉差库
 $("input").click(function () {
+    // ios适配
+    if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+        DeviceOrientationEvent.requestPermission()
+            .then(permissionState => {
+              if (permissionState === 'granted') {
+                // handle data
+              } else {
+                // handle denied
+              }
+            })
+            .catch((err) => {
+                alert('err',err)
+            });
+        } else {
+          alert('DeviceOrientationEvent.requestPermission is not a function!')
+        }
     let this_card = $(this).next()[0];
     let this_screen = $("input").index($(this));
     if (this.checked) {
@@ -64,18 +80,18 @@ for (const i of roundnum) {
     roundnum[which_rounder].className += ' rounderhover';
 }
 //适配
-if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-    DeviceOrientationEvent.requestPermission()
-        .then(permissionState => {
-          if (permissionState === 'granted') {
-            // handle data
-          } else {
-			// handle denied
-          }
-        })
-        .catch((err) => {
-            alert('err',err)
-        });
-    } else {
-      alert('DeviceOrientationEvent.requestPermission is not a function!')
-    }
+// if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+//     DeviceOrientationEvent.requestPermission()
+//         .then(permissionState => {
+//           if (permissionState === 'granted') {
+//             // handle data
+//           } else {
+// 			// handle denied
+//           }
+//         })
+//         .catch((err) => {
+//             alert('err',err)
+//         });
+//     } else {
+//       alert('DeviceOrientationEvent.requestPermission is not a function!')
+//     }

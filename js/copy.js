@@ -64,26 +64,18 @@ for (const i of roundnum) {
     roundnum[which_rounder].className += ' rounderhover';
 }
 //适配
-window.DeviceOrientationEvent.requestPermission()
-    .then(state => {
-        switch (state) {
-            case "granted":
-                DeviceMotionEvent.requestPermission().then(function (state) {
-                    if ('granted' === state) {
-                        window.addEventListener('devicemotion', function () {
-                        }, false);
-                    } else {
-                        alert('apply permission state: ' + state);
-                    }
-                }).catch(function (err) {
-                    alert('error: ' + err);
-                });
-                break;
-            case "denied":
-                alert("浏览器拒绝了使用陀螺仪");
-                break;
-            case "prompt":
-                alert("其他行为");
-                break;
-        }
-    });
+if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+    DeviceOrientationEvent.requestPermission()
+        .then(permissionState => {
+          if (permissionState === 'granted') {
+            // handle data
+          } else {
+			// handle denied
+          }
+        })
+        .catch((err) => {
+            alert('err',err)
+        });
+    } else {
+      alert('DeviceOrientationEvent.requestPermission is not a function!')
+    }

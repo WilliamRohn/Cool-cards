@@ -61,8 +61,9 @@ rounders.click(function () {
 var cardlist = document.querySelectorAll('.card');
 for (let i = 0; i < cardlist.length; i++) {
     VanillaTilt.init(cardlist[i], {
-        max: 40,
-        speed: 100,
+        max: 50,
+        speed: 50,
+        perspective: 500,
         transition: false,
     });
 };

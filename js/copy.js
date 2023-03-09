@@ -42,6 +42,7 @@ $("input").click(function () {
         VanillaTilt.init(this_card, {
             max: 25,
             speed: 400,
+            transition: false,
         });
     }
 }
@@ -61,10 +62,11 @@ rounders.click(function () {
 var cardlist = document.querySelectorAll('.card');
 for (let i = 0; i < cardlist.length; i++) {
     VanillaTilt.init(cardlist[i], {
-        max: 50,
-        speed: 50,
-        perspective: 500,
+        max: 25,
+        speed: 400,
+        perspective: 1500,
         transition: false,
+        gyroscopeSamples: 1,
     });
 };
 //固定屏幕

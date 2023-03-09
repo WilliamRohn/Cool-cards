@@ -61,8 +61,9 @@ rounders.click(function () {
 var cardlist = document.querySelectorAll('.card');
 for (let i = 0; i < cardlist.length; i++) {
     VanillaTilt.init(cardlist[i], {
-        max: 25,
-        speed: 400,
+        max: 40,
+        speed: 100,
+        transition: false,
     });
 };
 //固定屏幕
